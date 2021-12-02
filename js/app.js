@@ -28,6 +28,5 @@
   });
   
   //Initial Position of the slider: pixels from the left-edge or top-edge of viewport on siper orientation
-  // map.setSlider();
-  console.log(map._bounds.width)
+
 })();

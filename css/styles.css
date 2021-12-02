@@ -4,6 +4,14 @@
       overflow: hidden;
 		}
 
+    body * {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
     /* .leaflet-container {
       font-family: "Work Sans", sans-serif;
       font-size: 0.9rem;
