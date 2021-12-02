@@ -1,27 +1,5 @@
 (function () {
-
   'use strict';
-
-  // Set heights for page sections
-  // adjustHeight();
-
-  // // Utility functions
-  // window.addEventListener('resize', adjustHeight)
-
-  // function adjustHeight() {
-  //   const mapSize = document.querySelector("#map"),
-  //     contentSize = document.querySelector("#content"),
-  //     removeFooter = document.querySelector('#footer').offsetHeight,
-  //     removeHeader = document.querySelector('#header').offsetHeight
-  //   const resize = window.innerHeight - removeFooter - removeHeader;
-  //   if (window.innerWidth >= 768) {
-  //     contentSize.style.height = `${resize}px`
-  //     mapSize.style.height = `${resize}px`
-  //   } else {
-  //     contentSize.style.height = `${resize * 0.25}px`
-  //     mapSize.style.height = `${resize * 0.75}px`
-  //   }
-  // }
 
   const zoomlv_default=6.5;
   const center_default=[-84.3, 37.7]
@@ -48,5 +26,8 @@
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
   });
-
+  
+  //Initial Position of the slider: pixels from the left-edge or top-edge of viewport on siper orientation
+  // map.setSlider();
+  console.log(map._bounds.width)
 })();

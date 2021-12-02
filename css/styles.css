@@ -4,12 +4,12 @@
       overflow: hidden;
 		}
 
-    .leaflet-container {
+    /* .leaflet-container {
       font-family: "Work Sans", sans-serif;
       font-size: 0.9rem;
       line-height: 1.4rem;
       font-weight: 400;
-    }
+    } */
 
     /* #map {
       position: absolute;
@@ -25,9 +25,9 @@
     }
 
     #before {
-      top: 0%;
+      
     }
     
     #after {
-      top: 0%; 
+      
     }
