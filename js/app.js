@@ -23,19 +23,22 @@
   //   }
   // }
 
+  const zoomlv_default=6.5;
+  const center_default=[-84.3, 37.7]
+
   mapboxgl.accessToken = 'pk.eyJ1IjoiaGplMjM4IiwiYSI6ImNrcHI2c3N1djBmbGMydm1sa2N1eG5reGIifQ.bYFgbcy0nCVpRxCijxdjqw';
   const beforeMap = new mapboxgl.Map({
     container: 'before',
     style: 'mapbox://styles/hje238/ckvk2sit8119114qgc0lm8ht2',
-    center: [-85.9, 37.7],
-    zoom: 7
+    center: [center_default[0], center_default[1]],
+    zoom: zoomlv_default
   });
 
   const afterMap = new mapboxgl.Map({
     container: 'after',
-    style: 'mapbox://styles/hje238/ckvk2sit8119114qgc0lm8ht2',
-    center: [-85.9, 37.7],
-    zoom: 7
+    style: 'mapbox://styles/hje238/ckwpar0e41vie14p699l676ds',
+    center: [center_default[0], center_default[1]],
+    zoom: zoomlv_default
   });
 
   // A selector or reference to HTML element
