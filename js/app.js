@@ -67,7 +67,7 @@
         'fill-opacity': 0.5
         }
     });
-    aftermap.addLayer({
+    afterMap.addLayer({
       'id': 'weather_layer_outline_am',
       'type': 'line',
       'source': 'weather',
