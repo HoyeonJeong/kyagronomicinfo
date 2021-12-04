@@ -27,6 +27,8 @@
     // mousemove: true
   });
   
-  //Initial Position of the slider: pixels from the left-edge or top-edge of viewport on siper orientation
+  omnivore.csv("csv/weatherdata_wide.csv").addTo(beforeMap);
+
+
 
 })();
