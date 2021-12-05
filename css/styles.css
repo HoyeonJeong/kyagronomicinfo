@@ -1,33 +1,59 @@
-		body {
-			margin: 0;
-			padding: 0;
-      overflow: hidden;
-		}
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-    body * {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+h1 {
+  font-weight: 800;
+}
 
-    /* .leaflet-container {
-      font-family: "Work Sans", sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.4rem;
-      font-weight: 400;
-    } */
+.leaflet-container {
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+}
 
-    /* #map {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      bottom: 0;
-    } */
+.map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 
-    .map {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-    }
+#console {
+  position: absolute;
+  margin: 10px;
+  width: 240px;
+  background-color: white;
+  padding: 10px 20px;
+}
+
+.session {
+  margin-bottom: 20px;
+}
+
+
+.row {
+  height: 12px;
+  width: 100%;
+}
+  
+.colors {
+  background: linear-gradient(
+  to right,
+  #2dc4b2,
+  #3bb3c3,
+  #669ec4,
+  #a2719b,
+  #aa5e79
+);
+
+  margin-bottom: 5px;
+  }
+
+.label {
+  width: 15%;
+  display: inline-block;
+  text-align: center;
+}

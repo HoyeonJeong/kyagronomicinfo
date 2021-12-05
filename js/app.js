@@ -2,7 +2,7 @@
   'use strict';
 
   const zoomlv_default=6.5;
-  const center_default=[-84.3, 37.7]
+  const center_default=[-85.7, 37.7]
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiaGplMjM4IiwiYSI6ImNrcHI2c3N1djBmbGMydm1sa2N1eG5reGIifQ.bYFgbcy0nCVpRxCijxdjqw';
 
@@ -31,15 +31,22 @@
   beforeMap.on('load', () => {
     beforeMap.addSource('weather', {
       type: 'geojson',
-      data: 'csv/QGIStool/shp/weather_wide.geojson'
+      data: 'csv/QGIStool/shp/weather_long.geojson'
     });
     beforeMap.addLayer({
       'id': 'weather_layer_fill_bm',
       'type': 'fill',
       'source': 'weather',
       'paint': {
-        'fill-color': '#00ff00', // green color fill
-        'fill-opacity': 0.5
+        'fill-color': {
+          'property': 'tmin',
+          'stops':[
+            [-5, 'white'],
+            [0, 'orange'],
+            [5, 'red']
+          ]
+        }, // green color fill
+        'fill-opacity': 0.9
         }
     });
     beforeMap.addLayer({
@@ -63,9 +70,16 @@
       'type': 'fill',
       'source': 'weather',
       'paint': {
-        'fill-color': '#0000ff', // blue color fill
-        'fill-opacity': 0.5
-        }
+        'fill-color': {
+          'property': 'tmin',
+          'stops':[
+            [-5, 'white'],
+            [0, 'orange'],
+            [5, 'red']
+          ]
+        }, 
+      'fill-opacity': 0.9
+    }
     });
     afterMap.addLayer({
       'id': 'weather_layer_outline_am',
@@ -78,6 +92,5 @@
     });
   });
   
-
-  
+ 
 })();
