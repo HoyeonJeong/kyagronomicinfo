@@ -28,6 +28,21 @@
     // mousemove: true
   });
 
+  // Temperature Color
+  // [-20, '#fee5d9'],
+  // [-10, '#fcae91'],
+  // [0, '#fb6a4a'],
+  // [10, '#de2d26'],
+  // [20, '#a50f15']
+
+  // Rainfall Color
+  // [10, '#eff3ff'],
+  // [20, '#bdd7e7'],
+  // [30, '#6baed6'],
+  // [40, '#3182bd'],
+  // [50, '#08519c']
+
+  //Left Map base
   beforeMap.on('load', () => {
     beforeMap.addSource('weather', {
       type: 'geojson',
@@ -41,9 +56,11 @@
         'fill-color': {
           'property': 'tmin',
           'stops':[
-            [-5, 'white'],
-            [0, 'orange'],
-            [5, 'red']
+            [-20, '#fee5d9'],
+            [-10, '#fcae91'],
+            [0, '#fb6a4a'],
+            [10, '#de2d26'],
+            [20, '#a50f15']
           ]
         }, // green color fill
         'fill-opacity': 0.9
@@ -63,7 +80,7 @@
   afterMap.on('load', () => {
     afterMap.addSource('weather', {
       type: 'geojson',
-      data: 'csv/QGIStool/shp/weather_wide.geojson'
+      data: 'csv/QGIStool/shp/weather_long.geojson'
     });
     afterMap.addLayer({
       'id': 'weather_layer_fill_am',
@@ -71,11 +88,13 @@
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': 'tmin',
+          'property': 'prec',
           'stops':[
-            [-5, 'white'],
-            [0, 'orange'],
-            [5, 'red']
+            [5, '#eff3ff'],
+            [10, '#bdd7e7'],
+            [15, '#6baed6'],
+            [20, '#3182bd'],
+            [25, '#08519c']
           ]
         }, 
       'fill-opacity': 0.9
