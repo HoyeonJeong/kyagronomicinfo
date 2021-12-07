@@ -48,7 +48,7 @@
     let filterMonth = ['==', ['number', ['get', 'year']], 1];
     beforeMap.addSource('weather', {
       type: 'geojson',
-      data: 'csv/QGIStool/shp/weather_long.geojson'
+      data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
     beforeMap.addLayer({
       'id': 'weather_layer_fill_bm',
@@ -56,7 +56,7 @@
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': 'tmin',
+          'property': 'tmax201704',
           'stops': [
             [-20, '#fee5d9'],
             [-10, '#fcae91'],
@@ -94,7 +94,7 @@
     let filterMonth = ['==', ['number', ['get', 'year']], 1];
     afterMap.addSource('weather', {
       type: 'geojson',
-      data: 'csv/QGIStool/shp/weather_long.geojson'
+      data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
     afterMap.addLayer({
       'id': 'weather_layer_fill_am',
@@ -102,7 +102,7 @@
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': 'prec',
+          'property': 'prec201704',
           'stops': [
             [5, '#eff3ff'],
             [10, '#bdd7e7'],
