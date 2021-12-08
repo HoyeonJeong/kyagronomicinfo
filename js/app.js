@@ -19,7 +19,7 @@
     center: [center_default[0], center_default[1]],
     zoom: zoomlv_default,
   });
-
+  
   // A selector or reference to HTML element
   const container = '#comparison-container';
 
@@ -41,22 +41,40 @@
   // [30, '#6baed6'],
   // [40, '#3182bd'],
   // [50, '#08519c']
+  
+  const list_var_tmin=[
+    'tmin201701', 'tmin201702', 'tmin201703', 'tmin201704', 'tmin201705', 'tmin201706', 'tmin201707', 'tmin201708', 'tmin201709', 'tmin201710', 'tmin201711', 'tmin201712'
+  ];
+  const list_var_tmax=[
+    'tmax201701', 'tmax201702', 'tmax201703', 'tmax201704', 'tmax201705', 'tmax201706', 'tmax201707', 'tmax201708', 'tmax201709', 'tmax201710', 'tmax201711', 'tmax201712'
+  ];
+  const list_var_tavg=[
+    'tavg201701', 'tavg201702', 'tavg201703', 'tavg201704', 'tavg201705', 'tavg201706', 'tavg201707', 'tavg201708', 'tavg201709', 'tavg201710', 'tavg201711', 'tavg201712'
+  ];
+  const list_var_prec=[
+    'prec201701', 'prec201702', 'prec201703', 'prec201704', 'prec201705', 'prec201706', 'prec201707', 'prec201708', 'prec201709', 'prec201710', 'prec201711', 'prec201712'
+  ];
 
+  
+
+
+  // `${list_var_tmin[0]}`
   //Left Map base
   beforeMap.on('load', () => {
-    let filterYear = ['==', ['number', ['get', 'year']], 2017];
-    let filterMonth = ['==', ['number', ['get', 'year']], 1];
+    // let filterYear = ['==', ['number', ['get', 'year']], 2017];
+    // let filterMonth = ['==', ['number', ['get', 'year']], 1];
     beforeMap.addSource('weather', {
       type: 'geojson',
       data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
+
     beforeMap.addLayer({
       'id': 'weather_layer_fill_bm',
       'type': 'fill',
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': 'tmax201704',
+          'property': 'tmin201701',
           'stops': [
             [-20, '#fee5d9'],
             [-10, '#fcae91'],
@@ -77,6 +95,7 @@
         'line-width': 0.1
       }
     });
+
     //Filter for slider: update year filter when the slider is dragged
     document.getElementById('slider-year').addEventListener('input', (event) => {
       const timeYear = parseInt(event.target.value);
@@ -134,6 +153,7 @@
       })
     })
   });
+
 
 
 })();
