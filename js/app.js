@@ -28,6 +28,26 @@
     // mousemove: true
   });
 
+  
+  const slider_year=document.getElementById('slider-year-bar');
+  const slider_month=document.getElementById('slider-month-bar');
+  const left_var_list=document.getElementById('left-var-selection');
+  const right_var_list=document.getElementById('right-var-selection');
+
+  var user_select=[left_var_list.value, right_var_list.value, slider_year.value, slider_month.value];
+  
+  if (slider_month.value<10) {
+    var left_user_selection=user_select[0]+user_select[2]+0+user_select[3];
+    var right_user_selection=user_select[1]+user_select[2]+0+user_select[3];
+  } else {
+    var left_user_selection=user_select[0]+user_select[2]+user_select[3];
+    var right_user_selection=user_select[1]+user_select[2]+user_select[3];
+  };
+
+  console.log(left_user_selection);
+  console.log(right_user_selection);
+
+
   // Temperature Color
   // [-20, '#fee5d9'],
   // [-10, '#fcae91'],
@@ -41,24 +61,7 @@
   // [30, '#6baed6'],
   // [40, '#3182bd'],
   // [50, '#08519c']
-  
-  const list_var_tmin=[
-    'tmin201701', 'tmin201702', 'tmin201703', 'tmin201704', 'tmin201705', 'tmin201706', 'tmin201707', 'tmin201708', 'tmin201709', 'tmin201710', 'tmin201711', 'tmin201712'
-  ];
-  const list_var_tmax=[
-    'tmax201701', 'tmax201702', 'tmax201703', 'tmax201704', 'tmax201705', 'tmax201706', 'tmax201707', 'tmax201708', 'tmax201709', 'tmax201710', 'tmax201711', 'tmax201712'
-  ];
-  const list_var_tavg=[
-    'tavg201701', 'tavg201702', 'tavg201703', 'tavg201704', 'tavg201705', 'tavg201706', 'tavg201707', 'tavg201708', 'tavg201709', 'tavg201710', 'tavg201711', 'tavg201712'
-  ];
-  const list_var_prec=[
-    'prec201701', 'prec201702', 'prec201703', 'prec201704', 'prec201705', 'prec201706', 'prec201707', 'prec201708', 'prec201709', 'prec201710', 'prec201711', 'prec201712'
-  ];
 
-  
-
-
-  // `${list_var_tmin[0]}`
   //Left Map base
   beforeMap.on('load', () => {
     // let filterYear = ['==', ['number', ['get', 'year']], 2017];
@@ -68,13 +71,26 @@
       data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
 
+    // const labels = {
+		// 	"tmin": "Min Temperature",
+		// 	"tmax": "Max Temperature",
+		// 	"tavg": "Average Temperature",
+    //   "prec": "Precipitation"
+		// }
+   
+  //   document.getElementById('slider-year').addEventListener('input', event => {
+  //     var period_year=(event.target.value);
+  //   });
+  //   document.getElementById('slider-month').addEventListener('input', event => {
+  //     var period_month=(event.target.value);     
+  //   });
     beforeMap.addLayer({
       'id': 'weather_layer_fill_bm',
       'type': 'fill',
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': 'tmin201701',
+          'property': `${left_user_selection}`,
           'stops': [
             [-20, '#fee5d9'],
             [-10, '#fcae91'],
@@ -95,17 +111,16 @@
         'line-width': 0.1
       }
     });
-
-    //Filter for slider: update year filter when the slider is dragged
-    document.getElementById('slider-year').addEventListener('input', (event) => {
-      const timeYear = parseInt(event.target.value);
-      filterYear = ['==', ['number', ['get', 'year']], timeYear]
-      // document.getElementById('active-year').innerText=timeYear;
-      document.getElementById('slider-month').addEventListener('input', (event) => {
-        const timeMonth = parseInt(event.target.value);
-        filterMonth = ['==', ['number', ['get', 'month']], timeMonth]
-      })
-    })
+    // //Filter for slider: update year filter when the slider is dragged
+    // document.getElementById('slider-year').addEventListener('input', (event) => {
+    //   const timeYear = parseInt(event.target.value);
+    //   filterYear = ['==', ['number', ['get', 'year']], timeYear]
+    //   // document.getElementById('active-year').innerText=timeYear;
+    //   document.getElementById('slider-month').addEventListener('input', (event) => {
+    //     const timeMonth = parseInt(event.target.value);
+    //     filterMonth = ['==', ['number', ['get', 'month']], timeMonth]
+    //   })
+    // })
   });
 
   afterMap.on('load', () => {
@@ -121,13 +136,13 @@
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': 'prec201704',
+          'property': `${right_user_selection}`,
           'stops': [
-            [5, '#eff3ff'],
-            [10, '#bdd7e7'],
-            [15, '#6baed6'],
-            [20, '#3182bd'],
-            [25, '#08519c']
+            [-20, '#fee5d9'],
+            [-10, '#fcae91'],
+            [0, '#fb6a4a'],
+            [10, '#de2d26'],
+            [20, '#a50f15']
           ]
         },
         'fill-opacity': 0.9
@@ -142,16 +157,16 @@
         'line-width': 0.1
       }
     });
-    //Filter for slider: update year filter when the slider is dragged
-    document.getElementById('slider-year').addEventListener('input', (event) => {
-      const timeYear = parseInt(event.target.value);
-      filterYear = ['==', ['number', ['get', 'year']], timeYear]
-      // document.getElementById('active-year').innerText=timeYear;
-      document.getElementById('slider-month').addEventListener('input', (event) => {
-        const timeMonth = parseInt(event.target.value);
-        filterMonth = ['==', ['number', ['get', 'month']], timeMonth]
-      })
-    })
+    // //Filter for slider: update year filter when the slider is dragged
+    // document.getElementById('slider-year').addEventListener('input', (event) => {
+    //   const timeYear = parseInt(event.target.value);
+    //   filterYear = ['==', ['number', ['get', 'year']], timeYear]
+    //   // document.getElementById('active-year').innerText=timeYear;
+    //   document.getElementById('slider-month').addEventListener('input', (event) => {
+    //     const timeMonth = parseInt(event.target.value);
+    //     filterMonth = ['==', ['number', ['get', 'month']], timeMonth]
+    //   })
+    // })
   });
 
 
