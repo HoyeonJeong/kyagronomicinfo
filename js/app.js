@@ -116,7 +116,8 @@
     const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
     const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
     const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
-    const left_var_list_prec=document.getElementById('left-var-selection-prec');
+    const left_var_list_prec=document.getElementById('right-var-selection-prec');
+
     const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
     const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
     const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
@@ -146,22 +147,31 @@
       right_user_var_list="prec";
     };
 
+    if (left_user_var_list=="tmin" || left_user_var_list=="tmax" || left_user_var_list=="tavg") {
     if (slider_month.value<10) {
-    var user_selection=left_user_var_list+slider_year.value+0+slider_month.value;
+    var user_selection_temp=left_user_var_list+slider_year.value+0+slider_month.value;
     } else {
-      var user_selection=left_user_var_list+slider_year.value+slider_month.value;
-    };
-    var id_refresher='before'+Math.random();
-    console.log(user_selection);
-    console.log(id_refresher);
+      var user_selection_temp=left_user_var_list+slider_year.value+slider_month.value;
 
+    };
+    } else {
+    if (slider_month.value<10) {
+      var user_selection_prec=left_user_var_list+slider_year.value+0+slider_month.value;
+    } else if (slider_month.value>9) {
+      var user_selection_prec=left_user_var_list+slider_year.value+slider_month.value;
+    }};
+      
+    var id_refresher_temp='temp before'+Math.random();
+    var id_refresher_prec='prec before'+Math.random();
+
+    if (left_user_var_list=="tmin" || left_user_var_list=="tmax" || left_user_var_list=="tavg") {
     beforeMap.addLayer({
-      'id': id_refresher,
+      'id': id_refresher_temp,
       'type': 'fill',
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': user_selection,
+          'property': user_selection_temp,
           'stops': [
             [-5, '#2171b5'],
             [0, '#4292c6'],
@@ -176,6 +186,29 @@
         'fill-opacity': 0.9
       }
     });
+  } else {
+    beforeMap.addLayer({
+      'id': id_refresher_prec,
+      'type': 'fill',
+      'source': 'weather',
+      'paint': {
+        'fill-color': {
+          'property': user_selection_prec,
+          'stops': [
+            [5, '#2171b5'],
+            [10, '#4292c6'],
+            [15, '#feb24c'],
+            [20, '#fd8d3c'],
+            [25, '#fc4e2a'],
+            [30, '#e31a1c'],
+            [35, '#bd0026'],
+            [40, '#800026']
+        ]
+        }, // green color fill
+        'fill-opacity': 0.9
+      }
+    });
+    };
     });
     // //Filter for slider: update year filter when the slider is dragged
     // document.getElementById('slider-year').addEventListener('input', (event) => {
