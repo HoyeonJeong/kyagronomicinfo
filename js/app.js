@@ -87,6 +87,7 @@
       type: 'geojson',
       data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
+
   beforeMap.addLayer({
     'id': 'default',
     'type': 'fill',
@@ -106,6 +107,15 @@
         ]
       }, // green color fill
       'fill-opacity': 1.0
+    }
+  });
+  beforeMap.addLayer({
+    'id': 'weather_layer_outline_bm',
+    'type': 'line',
+    'source': 'weather',
+    'paint': {
+      'line-color': '#fff',
+      'line-width': 0.1
     }
   });
   ["change", "input"].forEach(function (event) {
@@ -162,7 +172,9 @@
     }};
       
     var id_refresher_temp='temp before'+Math.random();
+    var id_refresher_temp_line='temp before line'+Math.random();
     var id_refresher_prec='prec before'+Math.random();
+    var id_refresher_prec_line='prec before line'+Math.random();
 
     if (left_user_var_list=="tmin" || left_user_var_list=="tmax" || left_user_var_list=="tavg") {
     beforeMap.addLayer({
@@ -184,6 +196,15 @@
         ]
         }, // green color fill
         'fill-opacity': 0.9
+      }
+    });
+    beforeMap.addLayer({
+      'id': id_refresher_temp_line,
+      'type': 'line',
+      'source': 'weather',
+      'paint': {
+        'line-color': '#fff',
+        'line-width': 0.1
       }
     });
   } else {
@@ -208,18 +229,17 @@
         'fill-opacity': 0.9
       }
     });
+    beforeMap.addLayer({
+      'id': id_refresher_prec_line,
+      'type': 'line',
+      'source': 'weather',
+      'paint': {
+        'line-color': '#fff',
+        'line-width': 0.1
+      }
+    });
     };
     });
-    // //Filter for slider: update year filter when the slider is dragged
-    // document.getElementById('slider-year').addEventListener('input', (event) => {
-    //   const timeYear = parseInt(event.target.value);
-    //   filterYear = ['==', ['number', ['get', 'year']], timeYear]
-    //   // document.getElementById('active-year').innerText=timeYear;
-    //   document.getElementById('slider-month').addEventListener('input', (event) => {
-    //     const timeMonth = parseInt(event.target.value);
-    //     filterMonth = ['==', ['number', ['get', 'month']], timeMonth]
-    //   })
-    // })
   });
 });
 
