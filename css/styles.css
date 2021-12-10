@@ -33,6 +33,7 @@ h1 {
   width: 320px;
   background-color: white;
   padding: 10px 20px;
+  opacity: 1;
 }
 
 .session {
@@ -64,14 +65,14 @@ h1 {
 .preccolors {
   background: linear-gradient(
   to right,
-  #f7fcf5,
   #e5f5e0,
   #c7e9c0,
   #a1d99b,
   #74c476,
   #41ab5d,
   #238b45,
-  #005a32
+  #005a32,
+  #00441b
   );
   
   margin-bottom: 5px;
