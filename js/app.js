@@ -1,6 +1,15 @@
 (function () {
   'use strict';
 
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
   const zoomlv_default = 6.5; //Default zoomlevel
   const center_default = [-85.7, 37.7] //Default Coordinate
 
@@ -19,7 +28,7 @@
     center: [center_default[0], center_default[1]],
     zoom: zoomlv_default,
   });
-  
+
   // A selector or reference to HTML element
   const container = '#comparison-container';
 
@@ -27,163 +36,21 @@
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
   });
-
-  // var left_user_var_list="tmin";
-  // var right_user_var_list="tmin";
-
-  // document.addEventListener('change', (event) => {
-
-  // const slider_year=document.getElementById('slider-year-bar');
-  // const slider_month=document.getElementById('slider-month-bar');
-  // const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
-  // const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
-  // const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
-  // const left_var_list_prec=document.getElementById('left-var-selection-prec');
-  // const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
-  // const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
-  // const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
-  // const right_var_list_prec=document.getElementById('right-var-selection-prec');
- 
-  // if (left_var_list_tmin.selected==true) {
-  //   left_user_var_list="tmin";
-  // } else if (left_var_list_tmax.selected==true) {
-  //   left_user_var_list="tmax";
-  // } else if (left_var_list_tavg.selected==true) {
-  //   left_user_var_list="tavg";
-  // } else {
-  //   left_user_var_list="prec";
-  // };
-  
-  // if (right_var_list_tmin.selected==true) {
-  //   right_user_var_list="tmin";
-  // } else if (right_var_list_tmax.selected==true) {
-  //   right_user_var_list="tmax";
-  // } else if (right_var_list_tavg.selected==true) {
-  //   right_user_var_list="tavg";
-  // } else {
-  //   right_user_var_list="prec";
-  // };
-  // });
-
-  // Temperature Color
-  // [-20, '#fee5d9'],
-  // [-10, '#fcae91'],
-  // [0, '#fb6a4a'],
-  // [10, '#de2d26'],
-  // [20, '#a50f15']
-
-  // Rainfall Color
-  // [10, '#eff3ff'],
-  // [20, '#bdd7e7'],
-  // [30, '#6baed6'],
-  // [40, '#3182bd'],
-  // [50, '#08519c']
-
-  //Left Map base
+    //Left Map base (Beforemap)
   beforeMap.on('load', () => {
-    // let filterYear = ['==', ['number', ['get', 'year']], 2017];
-    // let filterMonth = ['==', ['number', ['get', 'year']], 1];
+
     beforeMap.addSource('weather', {
       type: 'geojson',
       data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
 
-  beforeMap.addLayer({
-    'id': 'default',
-    'type': 'fill',
-    'source': 'weather',
-    'paint': {
-      'fill-color': {
-        'property': 'tmin201701',
-        'stops': [
-            [-5, '#2171b5'],
-            [0, '#4292c6'],
-            [5, '#feb24c'],
-            [10, '#fd8d3c'],
-            [15, '#fc4e2a'],
-            [20, '#e31a1c'],
-            [25, '#bd0026'],
-            [30, '#800026']
-        ]
-      }, // green color fill
-      'fill-opacity': 1.0
-    }
-  });
-  beforeMap.addLayer({
-    'id': 'weather_layer_outline_bm',
-    'type': 'line',
-    'source': 'weather',
-    'paint': {
-      'line-color': '#fff',
-      'line-width': 0.1
-    }
-  });
-  ["change", "input"].forEach(function (event) {
-    document.addEventListener(event, function() {
-    var left_user_var_list="tmin";
-    var right_user_var_list="tmin";
-    
-    const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
-    const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
-    const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
-    const left_var_list_prec=document.getElementById('right-var-selection-prec');
-
-    const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
-    const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
-    const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
-    const right_var_list_prec=document.getElementById('right-var-selection-prec');
-
-    const slider_year=document.getElementById('slider-year-bar');
-    const slider_month=document.getElementById('slider-month-bar');
-
-
-    if (left_var_list_tmin.selected==true) {
-      left_user_var_list="tmin";
-    } else if (left_var_list_tmax.selected==true) {
-      left_user_var_list="tmax";
-    } else if (left_var_list_tavg.selected==true) {
-      left_user_var_list="tavg";
-    } else {
-      left_user_var_list="prec";
-    };
-    
-    if (right_var_list_tmin.selected==true) {
-      right_user_var_list="tmin";
-    } else if (right_var_list_tmax.selected==true) {
-      right_user_var_list="tmax";
-    } else if (right_var_list_tavg.selected==true) {
-      right_user_var_list="tavg";
-    } else {
-      right_user_var_list="prec";
-    };
-
-    if (left_user_var_list=="tmin" || left_user_var_list=="tmax" || left_user_var_list=="tavg") {
-    if (slider_month.value<10) {
-    var user_selection_temp=left_user_var_list+slider_year.value+0+slider_month.value;
-    } else {
-      var user_selection_temp=left_user_var_list+slider_year.value+slider_month.value;
-
-    };
-    } else {
-    if (slider_month.value<10) {
-      var user_selection_prec=left_user_var_list+slider_year.value+0+slider_month.value;
-    } else if (slider_month.value>9) {
-      var user_selection_prec=left_user_var_list+slider_year.value+slider_month.value;
-    }};
-      
-    var id_refresher_temp='temp before'+Math.random();
-    var id_refresher_temp_line='temp before line'+Math.random();
-    var id_refresher_prec='prec before'+Math.random();
-    var id_refresher_prec_line='prec before line'+Math.random();
-
-    if (left_user_var_list=="tmin" || left_user_var_list=="tmax" || left_user_var_list=="tavg") {
-    beforeMap.addLayer({
-      'id': id_refresher_temp,
+    beforeMap.addLayer({ //Left Map default
+      'id': 'default',
       'type': 'fill',
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': user_selection_temp,
+          'property': 'tavg201701',
           'stops': [
             [-5, '#2171b5'],
             [0, '#4292c6'],
@@ -193,13 +60,13 @@
             [20, '#e31a1c'],
             [25, '#bd0026'],
             [30, '#800026']
-        ]
+          ]
         }, // green color fill
-        'fill-opacity': 0.9
+        'fill-opacity': 1.0
       }
     });
     beforeMap.addLayer({
-      'id': id_refresher_temp_line,
+      'id': 'weather_layer_outline_bm',
       'type': 'line',
       'source': 'weather',
       'paint': {
@@ -207,43 +74,135 @@
         'line-width': 0.1
       }
     });
-  } else {
-    beforeMap.addLayer({
-      'id': id_refresher_prec,
-      'type': 'fill',
-      'source': 'weather',
-      'paint': {
-        'fill-color': {
-          'property': user_selection_prec,
-          'stops': [
-            [500, '#e5f5e0'],
-            [1000, '#c7e9c0'],
-            [5000, '#a1d99b'],
-            [10000, '#74c476'],
-            [15000, '#41ab5d'],
-            [20000, '#238b45'],
-            [25000, '#005a32'],
-            [30000, '#00441b']
-        ]
-        }, // green color fill
-        'fill-opacity': 0.9
-      }
-    });
-    beforeMap.addLayer({
-      'id': id_refresher_prec_line,
-      'type': 'line',
-      'source': 'weather',
-      'paint': {
-        'line-color': '#fff',
-        'line-width': 0.1
-      }
-    });
-    };
+    
+    ["change", "input"].forEach(function (event) { //User Interaction: dropdown and slider input
+      document.addEventListener(event, function () {
+        var left_user_var_list = "tavg"; //Declare the default dropdown
+        // var right_user_var_list="tmin";
+
+        const left_var_list_tmin = document.getElementById('left-var-selection-tmin'); //Extract the dropdown value
+        const left_var_list_tmax = document.getElementById('left-var-selection-tmax');
+        const left_var_list_tavg = document.getElementById('left-var-selection-tavg');
+        const left_var_list_prec = document.getElementById('right-var-selection-prec');
+
+        // const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
+        // const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
+        // const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
+        // const right_var_list_prec=document.getElementById('right-var-selection-prec');
+
+        const slider_year = document.getElementById('slider-year-bar'); //Extract the year slider input
+        const slider_month = document.getElementById('slider-month-bar'); //Extract the month slider input
+
+
+        if (left_var_list_tmin.selected == true) { //If statement: selected variable
+          left_user_var_list = "tmin";
+        } else if (left_var_list_tmax.selected == true) {
+          left_user_var_list = "tmax";
+        } else if (left_var_list_tavg.selected == true) {
+          left_user_var_list = "tavg";
+        } else {
+          left_user_var_list = "prec";
+        };
+
+        // if (right_var_list_tmin.selected==true) {
+        //   right_user_var_list="tmin";
+        // } else if (right_var_list_tmax.selected==true) {
+        //   right_user_var_list="tmax";
+        // } else if (right_var_list_tavg.selected==true) {
+        //   right_user_var_list="tavg";
+        // } else {
+        //   right_user_var_list="prec";
+        // };
+
+        if (left_user_var_list == "tmin" || left_user_var_list == "tmax" || left_user_var_list == "tavg") { //With selected variable --> make a property for Mapbox gl js
+          if (slider_month.value < 10) { //E.g., January 1 --> 01, Octomer 10 --> 10
+            var user_selection_temp = left_user_var_list + slider_year.value + 0 + slider_month.value;
+          } else {
+            var user_selection_temp = left_user_var_list + slider_year.value + slider_month.value;
+
+          };
+        } else {
+          if (slider_month.value < 10) {
+            var user_selection_prec = left_user_var_list + slider_year.value + 0 + slider_month.value;
+          } else if (slider_month.value > 9) {
+            var user_selection_prec = left_user_var_list + slider_year.value + slider_month.value;
+          }
+        };
+        
+        //ID generator using random numbers
+        var id_refresher_temp = 'temp before' + Math.random();
+        var id_refresher_temp_line = 'temp before line' + Math.random();
+        var id_refresher_prec = 'prec before' + Math.random();
+        var id_refresher_prec_line = 'prec before line' + Math.random();
+
+        if (left_user_var_list == "tmin" || left_user_var_list == "tmax" || left_user_var_list == "tavg") { //dropdown value==Temperature
+          beforeMap.addLayer({
+            'id': id_refresher_temp,
+            'type': 'fill',
+            'source': 'weather',
+            'paint': {
+              'fill-color': {
+                'property': user_selection_temp,
+                'stops': [
+                  [-5, '#2171b5'],
+                  [0, '#4292c6'],
+                  [5, '#feb24c'],
+                  [10, '#fd8d3c'],
+                  [15, '#fc4e2a'],
+                  [20, '#e31a1c'],
+                  [25, '#bd0026'],
+                  [30, '#800026']
+                ]
+              }, // green color fill
+              'fill-opacity': 0.9
+            }
+          });
+          beforeMap.addLayer({
+            'id': id_refresher_temp_line,
+            'type': 'line',
+            'source': 'weather',
+            'paint': {
+              'line-color': '#fff',
+              'line-width': 0.1
+            }
+          });
+        } else { //dropdown value==precepitation
+          beforeMap.addLayer({
+            'id': id_refresher_prec,
+            'type': 'fill',
+            'source': 'weather',
+            'paint': {
+              'fill-color': {
+                'property': user_selection_prec,
+                'stops': [
+                  [500, '#e5f5e0'],
+                  [1000, '#c7e9c0'],
+                  [5000, '#a1d99b'],
+                  [10000, '#74c476'],
+                  [15000, '#41ab5d'],
+                  [20000, '#238b45'],
+                  [25000, '#005a32'],
+                  [30000, '#00441b']
+                ]
+              }, // green color fill
+              'fill-opacity': 0.9
+            }
+          });
+          beforeMap.addLayer({
+            'id': id_refresher_prec_line,
+            'type': 'line',
+            'source': 'weather',
+            'paint': {
+              'line-color': '#fff',
+              'line-width': 0.1
+            }
+          });
+        };
+      });
     });
   });
-});
 
-  //Right Map base
+  //Right Map base: The same structure of Left Map
   afterMap.on('load', () => {
     afterMap.addSource('weather', {
       type: 'geojson',
@@ -251,101 +210,12 @@
     });
 
     afterMap.addLayer({
-    'id': 'default',
-    'type': 'fill',
-    'source': 'weather',
-    'paint': {
-      'fill-color': {
-        'property': 'tmin201701',
-        'stops': [
-            [-5, '#2171b5'],
-            [0, '#4292c6'],
-            [5, '#feb24c'],
-            [10, '#fd8d3c'],
-            [15, '#fc4e2a'],
-            [20, '#e31a1c'],
-            [25, '#bd0026'],
-            [30, '#800026']
-        ]
-      }, // green color fill
-      'fill-opacity': 1.0
-    }
-  });
-  afterMap.addLayer({
-    'id': 'weather_layer_outline_am',
-    'type': 'line',
-    'source': 'weather',
-    'paint': {
-      'line-color': '#fff',
-      'line-width': 0.1
-    }
-  });
-  ["change", "input"].forEach(function (event) {
-    document.addEventListener(event, function() {
-    var left_user_var_list="tmin";
-    var right_user_var_list="tmin";
-    
-    const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
-    const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
-    const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
-    const left_var_list_prec=document.getElementById('right-var-selection-prec');
-
-    const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
-    const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
-    const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
-    const right_var_list_prec=document.getElementById('right-var-selection-prec');
-
-    const slider_year=document.getElementById('slider-year-bar');
-    const slider_month=document.getElementById('slider-month-bar');
-
-
-    if (left_var_list_tmin.selected==true) {
-      left_user_var_list="tmin";
-    } else if (left_var_list_tmax.selected==true) {
-      left_user_var_list="tmax";
-    } else if (left_var_list_tavg.selected==true) {
-      left_user_var_list="tavg";
-    } else {
-      left_user_var_list="prec";
-    };
-    
-    if (right_var_list_tmin.selected==true) {
-      right_user_var_list="tmin";
-    } else if (right_var_list_tmax.selected==true) {
-      right_user_var_list="tmax";
-    } else if (right_var_list_tavg.selected==true) {
-      right_user_var_list="tavg";
-    } else {
-      right_user_var_list="prec";
-    };
-
-    if (right_user_var_list=="tmin" || right_user_var_list=="tmax" || right_user_var_list=="tavg") {
-    if (slider_month.value<10) {
-    var user_selection_temp=right_user_var_list+slider_year.value+0+slider_month.value;
-    } else {
-      var user_selection_temp=right_user_var_list+slider_year.value+slider_month.value;
-
-    };
-    } else {
-    if (slider_month.value<10) {
-      var user_selection_prec=right_user_var_list+slider_year.value+0+slider_month.value;
-    } else if (slider_month.value>9) {
-      var user_selection_prec=right_user_var_list+slider_year.value+slider_month.value;
-    }};
-      
-    var id_refresher_temp='temp before'+Math.random();
-    var id_refresher_temp_line='temp before line'+Math.random();
-    var id_refresher_prec='prec before'+Math.random();
-    var id_refresher_prec_line='prec before line'+Math.random();
-
-    if (right_user_var_list=="tmin" || right_user_var_list=="tmax" || right_user_var_list=="tavg") {
-    afterMap.addLayer({
-      'id': id_refresher_temp,
+      'id': 'default',
       'type': 'fill',
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': user_selection_temp,
+          'property': 'tavg201701',
           'stops': [
             [-5, '#2171b5'],
             [0, '#4292c6'],
@@ -355,13 +225,13 @@
             [20, '#e31a1c'],
             [25, '#bd0026'],
             [30, '#800026']
-        ]
+          ]
         }, // green color fill
-        'fill-opacity': 0.9
+        'fill-opacity': 1.0
       }
     });
     afterMap.addLayer({
-      'id': id_refresher_temp_line,
+      'id': 'weather_layer_outline_am',
       'type': 'line',
       'source': 'weather',
       'paint': {
@@ -369,42 +239,129 @@
         'line-width': 0.1
       }
     });
-  } else {
-    afterMap.addLayer({
-      'id': id_refresher_prec,
-      'type': 'fill',
-      'source': 'weather',
-      'paint': {
-        'fill-color': {
-          'property': user_selection_prec,
-          'stops': [
-            [500, '#e5f5e0'],
-            [1000, '#c7e9c0'],
-            [5000, '#a1d99b'],
-            [10000, '#74c476'],
-            [15000, '#41ab5d'],
-            [20000, '#238b45'],
-            [25000, '#005a32'],
-            [30000, '#00441b']
-        ]
-        }, // green color fill
-        'fill-opacity': 0.9
-      }
-    });
-    afterMap.addLayer({
-      'id': id_refresher_prec_line,
-      'type': 'line',
-      'source': 'weather',
-      'paint': {
-        'line-color': '#fff',
-        'line-width': 0.1
-      }
-    });
-    };
+    ["change", "input"].forEach(function (event) {
+      document.addEventListener(event, function () {
+        // var left_user_var_list="tmin";
+        var right_user_var_list = "tavg";
+
+        // const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
+        // const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
+        // const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
+        // const left_var_list_prec=document.getElementById('right-var-selection-prec');
+
+        const right_var_list_tmin = document.getElementById('right-var-selection-tmin');
+        const right_var_list_tmax = document.getElementById('right-var-selection-tmax');
+        const right_var_list_tavg = document.getElementById('right-var-selection-tavg');
+        const right_var_list_prec = document.getElementById('right-var-selection-prec');
+
+        const slider_year = document.getElementById('slider-year-bar');
+        const slider_month = document.getElementById('slider-month-bar');
+
+
+        // if (left_var_list_tmin.selected==true) {
+        //   left_user_var_list="tmin";
+        // } else if (left_var_list_tmax.selected==true) {
+        //   left_user_var_list="tmax";
+        // } else if (left_var_list_tavg.selected==true) {
+        //   left_user_var_list="tavg";
+        // } else {
+        //   left_user_var_list="prec";
+        // };
+
+        if (right_var_list_tmin.selected == true) {
+          right_user_var_list = "tmin";
+        } else if (right_var_list_tmax.selected == true) {
+          right_user_var_list = "tmax";
+        } else if (right_var_list_tavg.selected == true) {
+          right_user_var_list = "tavg";
+        } else {
+          right_user_var_list = "prec";
+        };
+
+        if (right_user_var_list == "tmin" || right_user_var_list == "tmax" || right_user_var_list == "tavg") {
+          if (slider_month.value < 10) {
+            var user_selection_temp = right_user_var_list + slider_year.value + 0 + slider_month.value;
+          } else {
+            var user_selection_temp = right_user_var_list + slider_year.value + slider_month.value;
+
+          };
+        } else {
+          if (slider_month.value < 10) {
+            var user_selection_prec = right_user_var_list + slider_year.value + 0 + slider_month.value;
+          } else if (slider_month.value > 9) {
+            var user_selection_prec = right_user_var_list + slider_year.value + slider_month.value;
+          }
+        };
+
+        var id_refresher_temp = 'temp before' + Math.random();
+        var id_refresher_temp_line = 'temp before line' + Math.random();
+        var id_refresher_prec = 'prec before' + Math.random();
+        var id_refresher_prec_line = 'prec before line' + Math.random();
+
+        if (right_user_var_list == "tmin" || right_user_var_list == "tmax" || right_user_var_list == "tavg") {
+          afterMap.addLayer({
+            'id': id_refresher_temp,
+            'type': 'fill',
+            'source': 'weather',
+            'paint': {
+              'fill-color': {
+                'property': user_selection_temp,
+                'stops': [
+                  [-5, '#2171b5'],
+                  [0, '#4292c6'],
+                  [5, '#feb24c'],
+                  [10, '#fd8d3c'],
+                  [15, '#fc4e2a'],
+                  [20, '#e31a1c'],
+                  [25, '#bd0026'],
+                  [30, '#800026']
+                ]
+              }, // green color fill
+              'fill-opacity': 0.9
+            }
+          });
+          afterMap.addLayer({
+            'id': id_refresher_temp_line,
+            'type': 'line',
+            'source': 'weather',
+            'paint': {
+              'line-color': '#fff',
+              'line-width': 0.1
+            }
+          });
+        } else {
+          afterMap.addLayer({
+            'id': id_refresher_prec,
+            'type': 'fill',
+            'source': 'weather',
+            'paint': {
+              'fill-color': {
+                'property': user_selection_prec,
+                'stops': [
+                  [500, '#e5f5e0'],
+                  [1000, '#c7e9c0'],
+                  [5000, '#a1d99b'],
+                  [10000, '#74c476'],
+                  [15000, '#41ab5d'],
+                  [20000, '#238b45'],
+                  [25000, '#005a32'],
+                  [30000, '#00441b']
+                ]
+              }, // green color fill
+              'fill-opacity': 0.9
+            }
+          });
+          afterMap.addLayer({
+            'id': id_refresher_prec_line,
+            'type': 'line',
+            'source': 'weather',
+            'paint': {
+              'line-color': '#fff',
+              'line-width': 0.1
+            }
+          });
+        };
+      });
     });
   });
-});
-
-
-
 })();

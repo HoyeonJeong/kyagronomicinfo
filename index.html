@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Swipe between maps</title>
+	<title>KY Weather Info</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
 	<link rel="stylesheet"
@@ -24,7 +24,6 @@
 
 <body>
 	<div class="container-fluid">
-		<header class="row bg-dark text-white py=3">
 			<div class="col">
 				<h1>Kentucky Weather Information</h1>
 			</div>
@@ -41,11 +40,11 @@
 					<div class="row labels">
 						<div class="label">-5</div>
 						<div class="label">0</div>
-						<div class="label">+5</div>
-						<div class="label">+10</div>
-						<div class="label">+15</div>
-						<div class="label">+20</div>
-						<div class="label">+25</div>
+						<div class="label"> </div>
+						<div class="label"> </div>
+						<div class="label"> </div>
+						<div class="label"> </div>
+						<div class="label"> </div>
 						<div class="label">+30</div>
 					</div>
 				</div>
@@ -60,38 +59,39 @@
 						<div class="label"> </div>
 						<div class="label"> </div>
 						<div class="label"> </div>
-						<div class="label">30000</div>
+						<div class="label">30,000</div>
 					</div>
-				</div><br>
+				</div>
 				<div id="variable-change">
-				<div class="form-group mr-3 mt-3" id="left-var-selection_all">
-					<select class="form-select bg-primary text-white">
-						<option id="left-var-selection-tmin" value="tmin" selected>Left Map Min Heat</option>
-						<option id="left-var-selection-tmax" value="tmax">Left Map Max Heat</option>
-						<option id="left-var-selection-tavg" value="tavg">Left Map Average Heat</option>
-						<option id="left-var-selection-prec" value="precp">Left Map Rainfall</option>
-					</select>
+					<div class="form-group mr-3 mt-3" id="left-var-selection_all">
+						<select class="form-select bg-primary text-white">
+							<option id="left-var-selection-tavg" value="tavg" selected>Left Map Average Heat</option>
+							<option id="left-var-selection-tmin" value="tmin">Left Map Min Heat</option>
+							<option id="left-var-selection-tmax" value="tmax">Left Map Max Heat</option>
+							<option id="left-var-selection-prec" value="precp">Left Map Rainfall</option>
+						</select>
+					</div>
+					<div class="form-group mr-3 mt-3" id="right-var-selection_all">
+						<select class="form-select bg-primary text-white">
+							<option id="right-var-selection-tavg" value="tavg" selected>Right Map Average Heat</option>
+							<option id="right-var-selection-tmin" value="tmin">Right Map Min Heat</option>
+							<option id="right-var-selection-tmax" value="tmax">Right Map Max Heat</option>
+							<option id="right-var-selection-prec" value="precp">Right Map Rainfall</option>
+						</select>
+					</div><br>
+					<div class="session">
+						<h5><label id="slider-year">Year</label></h5>
+						<p><input id="slider-year-bar" class="row" type="range" min="2017" max="2019" step="1"
+								value="2017" />
+						</p>
+						<h5><label id="slider-month">Month</label></h5>
+						<input id="slider-month-bar" class="row" type="range" min="1" max="12" step="1" value="1" />
+					</div>
 				</div>
-				<div class="form-group mr-3 mt-3" id="right-var-selection_all">
-					<select class="form-select bg-primary text-white">
-						<option id="right-var-selection-tmin" value="tmin" selected>Right Map Min Heat</option>
-						<option id="right-var-selection-tmax" value="tmax">Right Map Max Heat</option>
-						<option id="right-var-selection-tavg" value="tavg">Right Map Average Heat</option>
-						<option id="right-var-selection-prec" value="precp">Right Map Rainfall</option>
-					</select>
-				</div><br>
-				<div class="session">
-					<h5><label id="slider-year">Year</label></h5>
-					<p><input id="slider-year-bar" class="row" type="range" min="2017" max="2019" step="1" value="2017" />
-					</p>
-					<h5><label id="slider-month">Month</label></h5>
-					<input id="slider-month-bar" class="row" type="range" min="1" max="12" step="1" value="1" />
-				</div>
-			</div>
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- Scripts -->
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
 	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>

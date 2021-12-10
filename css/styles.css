@@ -15,12 +15,6 @@ h1 {
   font-weight: 400;
 }
 
-#map {
-  height: 75vh;
-  border-top: 2px solid orange;
-  background-color: rgb(220, 220, 220);
-}
-
 .map {
   position: absolute;
   height: 100%;
@@ -83,3 +77,8 @@ h1 {
   display: inline-block;
   text-align: justify;
 }
+
+/* .mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  } */
