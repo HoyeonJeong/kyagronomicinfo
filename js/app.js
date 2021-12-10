@@ -28,25 +28,42 @@
     // mousemove: true
   });
 
+  // var left_user_var_list="tmin";
+  // var right_user_var_list="tmin";
+
+  // document.addEventListener('change', (event) => {
+
+  // const slider_year=document.getElementById('slider-year-bar');
+  // const slider_month=document.getElementById('slider-month-bar');
+  // const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
+  // const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
+  // const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
+  // const left_var_list_prec=document.getElementById('left-var-selection-prec');
+  // const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
+  // const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
+  // const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
+  // const right_var_list_prec=document.getElementById('right-var-selection-prec');
+ 
+  // if (left_var_list_tmin.selected==true) {
+  //   left_user_var_list="tmin";
+  // } else if (left_var_list_tmax.selected==true) {
+  //   left_user_var_list="tmax";
+  // } else if (left_var_list_tavg.selected==true) {
+  //   left_user_var_list="tavg";
+  // } else {
+  //   left_user_var_list="prec";
+  // };
   
-  const slider_year=document.getElementById('slider-year-bar');
-  const slider_month=document.getElementById('slider-month-bar');
-  const left_var_list=document.getElementById('left-var-selection');
-  const right_var_list=document.getElementById('right-var-selection');
-
-  var user_select=[left_var_list.value, right_var_list.value, slider_year.value, slider_month.value];
-  
-  if (slider_month.value<10) {
-    var left_user_selection=user_select[0]+user_select[2]+0+user_select[3];
-    var right_user_selection=user_select[1]+user_select[2]+0+user_select[3];
-  } else {
-    var left_user_selection=user_select[0]+user_select[2]+user_select[3];
-    var right_user_selection=user_select[1]+user_select[2]+user_select[3];
-  };
-
-  console.log(left_user_selection);
-  console.log(right_user_selection);
-
+  // if (right_var_list_tmin.selected==true) {
+  //   right_user_var_list="tmin";
+  // } else if (right_var_list_tmax.selected==true) {
+  //   right_user_var_list="tmax";
+  // } else if (right_var_list_tavg.selected==true) {
+  //   right_user_var_list="tavg";
+  // } else {
+  //   right_user_var_list="prec";
+  // };
+  // });
 
   // Temperature Color
   // [-20, '#fee5d9'],
@@ -70,46 +87,95 @@
       type: 'geojson',
       data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
+  beforeMap.addLayer({
+    'id': 'default',
+    'type': 'fill',
+    'source': 'weather',
+    'paint': {
+      'fill-color': {
+        'property': 'tmin201701',
+        'stops': [
+            [-5, '#ffeda0'],
+            [0, '#fed976'],
+            [5, '#feb24c'],
+            [10, '#fd8d3c'],
+            [15, '#fc4e2a'],
+            [20, '#e31a1c'],
+            [25, '#bd0026'],
+            [30, '#800026']
+        ]
+      }, // green color fill
+      'fill-opacity': 1.0
+    }
+  });
+  ["change", "input"].forEach(function (event) {
+    document.addEventListener(event, function() {
+    var left_user_var_list="tmin";
+    var right_user_var_list="tmin";
+    
+    const left_var_list_tmin=document.getElementById('left-var-selection-tmin');
+    const left_var_list_tmax=document.getElementById('left-var-selection-tmax');
+    const left_var_list_tavg=document.getElementById('left-var-selection-tavg');
+    const left_var_list_prec=document.getElementById('left-var-selection-prec');
+    const right_var_list_tmin=document.getElementById('right-var-selection-tmin');
+    const right_var_list_tmax=document.getElementById('right-var-selection-tmax');
+    const right_var_list_tavg=document.getElementById('right-var-selection-tavg');
+    const right_var_list_prec=document.getElementById('right-var-selection-prec');
 
-    // const labels = {
-		// 	"tmin": "Min Temperature",
-		// 	"tmax": "Max Temperature",
-		// 	"tavg": "Average Temperature",
-    //   "prec": "Precipitation"
-		// }
-   
-  //   document.getElementById('slider-year').addEventListener('input', event => {
-  //     var period_year=(event.target.value);
-  //   });
-  //   document.getElementById('slider-month').addEventListener('input', event => {
-  //     var period_month=(event.target.value);     
-  //   });
+    const slider_year=document.getElementById('slider-year-bar');
+    const slider_month=document.getElementById('slider-month-bar');
+
+
+    if (left_var_list_tmin.selected==true) {
+      left_user_var_list="tmin";
+    } else if (left_var_list_tmax.selected==true) {
+      left_user_var_list="tmax";
+    } else if (left_var_list_tavg.selected==true) {
+      left_user_var_list="tavg";
+    } else {
+      left_user_var_list="prec";
+    };
+    
+    if (right_var_list_tmin.selected==true) {
+      right_user_var_list="tmin";
+    } else if (right_var_list_tmax.selected==true) {
+      right_user_var_list="tmax";
+    } else if (right_var_list_tavg.selected==true) {
+      right_user_var_list="tavg";
+    } else {
+      right_user_var_list="prec";
+    };
+
+    if (slider_month.value<10) {
+    var user_selection=left_user_var_list+slider_year.value+0+slider_month.value;
+    } else {
+      var user_selection=left_user_var_list+slider_year.value+slider_month.value;
+    };
+    var id_refresher='before'+Math.random();
+    console.log(user_selection);
+    console.log(id_refresher);
+
     beforeMap.addLayer({
-      'id': 'weather_layer_fill_bm',
+      'id': id_refresher,
       'type': 'fill',
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': `${left_user_selection}`,
+          'property': user_selection,
           'stops': [
-            [-20, '#fee5d9'],
-            [-10, '#fcae91'],
-            [0, '#fb6a4a'],
-            [10, '#de2d26'],
-            [20, '#a50f15']
-          ]
+            [-5, '#ffeda0'],
+            [0, '#fed976'],
+            [5, '#feb24c'],
+            [10, '#fd8d3c'],
+            [15, '#fc4e2a'],
+            [20, '#e31a1c'],
+            [25, '#bd0026'],
+            [30, '#800026']
+        ]
         }, // green color fill
         'fill-opacity': 0.9
       }
     });
-    beforeMap.addLayer({
-      'id': 'weather_layer_outline',
-      'type': 'line',
-      'source': 'weather',
-      'paint': {
-        'line-color': '#000',
-        'line-width': 0.1
-      }
     });
     // //Filter for slider: update year filter when the slider is dragged
     // document.getElementById('slider-year').addEventListener('input', (event) => {
@@ -122,6 +188,7 @@
     //   })
     // })
   });
+});
 
   afterMap.on('load', () => {
     let filterYear = ['==', ['number', ['get', 'year']], 2017];
@@ -136,7 +203,7 @@
       'source': 'weather',
       'paint': {
         'fill-color': {
-          'property': `${right_user_selection}`,
+          'property': 'tmax201701',
           'stops': [
             [-20, '#fee5d9'],
             [-10, '#fcae91'],

@@ -15,6 +15,12 @@ h1 {
   font-weight: 400;
 }
 
+#map {
+  height: 75vh;
+  border-top: 2px solid orange;
+  background-color: rgb(220, 220, 220);
+}
+
 .map {
   position: absolute;
   height: 100%;
@@ -42,11 +48,15 @@ h1 {
 .colors {
   background: linear-gradient(
   to right,
-  #2dc4b2,
-  #3bb3c3,
-  #669ec4,
-  #a2719b,
-  #aa5e79
+  #08306b
+  #08519c
+  #fed976
+  #feb24c
+  #fd8d3c
+  #fc4e2a
+  #e31a1c
+  #bd0026
+  #800026
 );
 
   margin-bottom: 5px;
