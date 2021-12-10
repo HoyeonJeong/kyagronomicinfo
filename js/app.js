@@ -95,8 +95,8 @@
       'fill-color': {
         'property': 'tmin201701',
         'stops': [
-            [-5, '#ffeda0'],
-            [0, '#fed976'],
+            [-5, '#2171b5'],
+            [0, '#4292c6'],
             [5, '#feb24c'],
             [10, '#fd8d3c'],
             [15, '#fc4e2a'],
@@ -163,8 +163,8 @@
         'fill-color': {
           'property': user_selection,
           'stops': [
-            [-5, '#ffeda0'],
-            [0, '#fed976'],
+            [-5, '#2171b5'],
+            [0, '#4292c6'],
             [5, '#feb24c'],
             [10, '#fd8d3c'],
             [15, '#fc4e2a'],
