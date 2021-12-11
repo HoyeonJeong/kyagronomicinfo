@@ -95,3 +95,10 @@ h1 {
   max-width: 400px;
   font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
+
+/* When screen is 768px and wider. */
+@media screen and (max-width: 768px) {
+#console {
+  display: none;
+  }
+}

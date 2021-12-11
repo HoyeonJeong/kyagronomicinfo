@@ -1,15 +1,6 @@
 (function () {
   'use strict';
 
-  function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-
   const zoomlv_default = 6.5; //Default zoomlevel
   const center_default = [-86.9, 37.7] //Default Coordinate
 
@@ -45,8 +36,6 @@
   function adjustSwipe() {
     map.setSlider(mapSize.offsetWidth-480);
   }
-
-
 
   //Left Map base (Beforemap)
   beforeMap.on('load', () => {
