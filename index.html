@@ -23,18 +23,16 @@
 </head>
 
 <body>
-	<div class="container-fluid">
-		<header>
-			<div class="col">
-				<h1>Kentucky Weather Information</h1>
-			</div>
-		</header>
-		<div class="col-md-9 p-0">
-			<div id="comparison-container">
-				<div id="before" class="map"></div>
-				<div id="after" class="map"></div>
-			</div>
+	
+		<div id="comparison-container">
+			<div id="before" class="map"></div>
+			<div id="after" class="map"></div>
+		</div>
+			<!-- Console DIV start -->
 			<div id="console">
+				<div class="title-session">
+					<h2>KY Weather Information
+				</div>
 				<div class="session">
 					<h5>Temperature (&#x2103)</h5>
 					<div class="row tempcolors"></div>
@@ -87,16 +85,14 @@
 						</p>
 						<h5><label id="slider-month">Month</label></h5>
 						<input id="slider-month-bar" class="row" type="range" min="1" max="12" step="1" value="1" />
-					<br>
-					<div>
-						<h7>© <a href="https://github.com/HoyeonJeong" target="_blank">Hoyeon Jeong</a>, Nov. 2021.</h7>
-					</div>
 					</div>
 				</div>
+				<div>
+					<h7>© <a href="https://github.com/HoyeonJeong" target="_blank">Hoyeon Jeong</a>, Nov. 2021.
+					</h7>
+				</div>
 			</div>
-		</div>
-		
-	</div>
+		<!-- Console DIV End -->
 
 	<!-- Scripts -->
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>

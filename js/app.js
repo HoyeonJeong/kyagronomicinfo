@@ -11,7 +11,7 @@
   }
 
   const zoomlv_default = 6.5; //Default zoomlevel
-  const center_default = [-85.7, 37.7] //Default Coordinate
+  const center_default = [-86.9, 37.7] //Default Coordinate
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiaGplMjM4IiwiYSI6ImNrcHI2c3N1djBmbGMydm1sa2N1eG5reGIifQ.bYFgbcy0nCVpRxCijxdjqw'; //Access Token
 
@@ -36,7 +36,19 @@
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
   });
-    //Left Map base (Beforemap)
+  
+  const mapSize=document.querySelector(".map");
+  map.setSlider(mapSize.offsetWidth-480);
+  
+  window.addEventListener("resize", adjustSwipe);
+
+  function adjustSwipe() {
+    map.setSlider(mapSize.offsetWidth-480);
+  }
+
+
+
+  //Left Map base (Beforemap)
   beforeMap.on('load', () => {
 
     beforeMap.addSource('weather', {
