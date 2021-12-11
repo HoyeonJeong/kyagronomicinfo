@@ -28,6 +28,7 @@
     // mousemove: true
   });
   
+  // Swiper position change by windows size
   const mapSize=document.querySelector(".map");
   map.setSlider(mapSize.offsetWidth-480);
   
@@ -36,6 +37,7 @@
   function adjustSwipe() {
     map.setSlider(mapSize.offsetWidth-480);
   }
+
 
   //Left Map base (Beforemap)
   beforeMap.on('load', () => {
@@ -75,7 +77,18 @@
         'line-width': 0.1
       }
     });
-    
+    beforeMap.on('click', 'default', (e) => {
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(e.features[0].properties.tavg201701)
+        .addTo(beforeMap);
+    });
+    beforeMap.on('mouseenter', 'default', () => {
+      beforeMap.getCanvas().style.cursor = 'pointer';
+    });
+    beforeMap.on('mouseleave', 'default', () => {
+      beforeMap.getCanvas().style.cursor = '';
+    });
     ["change", "input"].forEach(function (event) { //User Interaction: dropdown and slider input
       document.addEventListener(event, function () {
         var left_user_var_list = "tavg"; //Declare the default dropdown
@@ -167,6 +180,18 @@
               'line-width': 0.1
             }
           });
+          beforeMap.on('click', id_refresher_temp, (e) => {
+            new mapboxgl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML(e.features[0].properties[user_selection_temp])
+              .addTo(beforeMap);
+          });
+          beforeMap.on('mouseenter', id_refresher_temp, () => {
+            beforeMap.getCanvas().style.cursor = 'pointer';
+          });
+          beforeMap.on('mouseleave', id_refresher_temp, () => {
+            beforeMap.getCanvas().style.cursor = '';
+          });
         } else { //dropdown value==precepitation
           beforeMap.addLayer({
             'id': id_refresher_prec,
@@ -197,6 +222,18 @@
               'line-color': '#fff',
               'line-width': 0.1
             }
+          });
+          beforeMap.on('click', id_refresher_prec, (e) => {
+            new mapboxgl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML(e.features[0].properties[user_selection_prec])
+              .addTo(beforeMap);
+          });
+          beforeMap.on('mouseenter', id_refresher_prec, () => {
+            beforeMap.getCanvas().style.cursor = 'pointer';
+          });
+          beforeMap.on('mouseleave', id_refresher_prec, () => {
+            beforeMap.getCanvas().style.cursor = '';
           });
         };
       });
