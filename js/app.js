@@ -80,7 +80,7 @@
     beforeMap.on('click', 'default', (e) => {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML(e.features[0].properties.tavg201701)
+        .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties.tavg201701).toLocaleString()+'&#x2103')
         .addTo(beforeMap);
     });
     beforeMap.on('mouseenter', 'default', () => {
@@ -88,6 +88,7 @@
     });
     beforeMap.on('mouseleave', 'default', () => {
       beforeMap.getCanvas().style.cursor = '';
+      popup.remove();
     });
     ["change", "input"].forEach(function (event) { //User Interaction: dropdown and slider input
       document.addEventListener(event, function () {
@@ -183,7 +184,7 @@
           beforeMap.on('click', id_refresher_temp, (e) => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML(e.features[0].properties[user_selection_temp])
+              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_temp]).toLocaleString()+'&#x2103')
               .addTo(beforeMap);
           });
           beforeMap.on('mouseenter', id_refresher_temp, () => {
@@ -191,6 +192,7 @@
           });
           beforeMap.on('mouseleave', id_refresher_temp, () => {
             beforeMap.getCanvas().style.cursor = '';
+            popup.remove();
           });
         } else { //dropdown value==precepitation
           beforeMap.addLayer({
@@ -201,14 +203,14 @@
               'fill-color': {
                 'property': user_selection_prec,
                 'stops': [
-                  [500, '#e5f5e0'],
-                  [1000, '#c7e9c0'],
-                  [5000, '#a1d99b'],
-                  [10000, '#74c476'],
-                  [15000, '#41ab5d'],
-                  [20000, '#238b45'],
-                  [25000, '#005a32'],
-                  [30000, '#00441b']
+                  [1, '#e5f5e0'],
+                  [5, '#c7e9c0'],
+                  [10, '#a1d99b'],
+                  [50, '#74c476'],
+                  [100, '#41ab5d'],
+                  [150, '#238b45'],
+                  [200, '#005a32'],
+                  [250, '#00441b']
                 ]
               }, // green color fill
               'fill-opacity': 0.9
@@ -226,7 +228,7 @@
           beforeMap.on('click', id_refresher_prec, (e) => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML(e.features[0].properties[user_selection_prec])
+              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_prec]).toLocaleString()+'mm')
               .addTo(beforeMap);
           });
           beforeMap.on('mouseenter', id_refresher_prec, () => {
@@ -234,6 +236,7 @@
           });
           beforeMap.on('mouseleave', id_refresher_prec, () => {
             beforeMap.getCanvas().style.cursor = '';
+            popup.remove();
           });
         };
       });
@@ -276,6 +279,19 @@
         'line-color': '#fff',
         'line-width': 0.1
       }
+    });
+    afterMap.on('click', 'default', (e) => {
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties.tavg201701).toLocaleString()+'&#x2103')
+        .addTo(afterMap);
+    });
+    afterMap.on('mouseenter', 'default', () => {
+      afterMap.getCanvas().style.cursor = 'pointer';
+    });
+    afterMap.on('mouseleave', 'default', () => {
+      afterMap.getCanvas().style.cursor = '';
+      popup.remove();
     });
     ["change", "input"].forEach(function (event) {
       document.addEventListener(event, function () {
@@ -367,6 +383,19 @@
               'line-width': 0.1
             }
           });
+          afterMap.on('click', id_refresher_temp, (e) => {
+            new mapboxgl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_temp]).toLocaleString()+'&#x2103')
+              .addTo(afterMap);
+          });
+          afterMap.on('mouseenter', id_refresher_temp, () => {
+            afterMap.getCanvas().style.cursor = 'pointer';
+          });
+          afterMap.on('mouseleave', id_refresher_temp, () => {
+            afterMap.getCanvas().style.cursor = '';
+            popup.remove();
+          });
         } else {
           afterMap.addLayer({
             'id': id_refresher_prec,
@@ -376,14 +405,14 @@
               'fill-color': {
                 'property': user_selection_prec,
                 'stops': [
-                  [500, '#e5f5e0'],
-                  [1000, '#c7e9c0'],
-                  [5000, '#a1d99b'],
-                  [10000, '#74c476'],
-                  [15000, '#41ab5d'],
-                  [20000, '#238b45'],
-                  [25000, '#005a32'],
-                  [30000, '#00441b']
+                  [1, '#e5f5e0'],
+                  [5, '#c7e9c0'],
+                  [10, '#a1d99b'],
+                  [50, '#74c476'],
+                  [100, '#41ab5d'],
+                  [150, '#238b45'],
+                  [200, '#005a32'],
+                  [250, '#00441b']
                 ]
               }, // green color fill
               'fill-opacity': 0.9
@@ -397,6 +426,19 @@
               'line-color': '#fff',
               'line-width': 0.1
             }
+          });
+          afterMap.on('click', id_refresher_prec, (e) => {
+            new mapboxgl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_prec]).toLocaleString()+'mm')
+              .addTo(afterMap);
+          });
+          afterMap.on('mouseenter', id_refresher_prec, () => {
+            afterMap.getCanvas().style.cursor = 'pointer';
+          });
+          afterMap.on('mouseleave', id_refresher_prec, () => {
+            afterMap.getCanvas().style.cursor = '';
+            popup.remove();
           });
         };
       });
