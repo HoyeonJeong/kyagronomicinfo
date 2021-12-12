@@ -27,15 +27,15 @@
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
   });
-  
+
   // Swiper position change by windows size
-  const mapSize=document.querySelector(".map");
-  map.setSlider(mapSize.offsetWidth*0.6);
-  
+  const mapSize = document.querySelector(".map");
+  map.setSlider(mapSize.offsetWidth * 0.6);
+
   window.addEventListener("resize", adjustSwipe);
 
   function adjustSwipe() {
-    map.setSlider(mapSize.offsetWidth*0.6);
+    map.setSlider(mapSize.offsetWidth * 0.6);
   }
 
 
@@ -80,7 +80,7 @@
     beforeMap.on('click', 'default', (e) => {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties.tavg201701).toLocaleString()+'&#x2103')
+        .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties.tavg201701).toLocaleString() + '&#x2103')
         .addTo(beforeMap);
     });
     beforeMap.on('mouseenter', 'default', () => {
@@ -142,7 +142,7 @@
             var user_selection_prec = left_user_var_list + slider_year.value + slider_month.value;
           }
         };
-        
+
         //ID generator using random numbers
         var id_refresher_temp = 'temp before' + Math.random();
         var id_refresher_temp_line = 'temp before line' + Math.random();
@@ -183,7 +183,7 @@
           beforeMap.on('click', id_refresher_temp, (e) => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_temp]).toLocaleString()+'&#x2103')
+              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_temp]).toLocaleString() + '&#x2103')
               .addTo(beforeMap);
           });
           beforeMap.on('mouseenter', id_refresher_temp, () => {
@@ -226,7 +226,7 @@
           beforeMap.on('click', id_refresher_prec, (e) => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_prec]).toLocaleString()+'mm')
+              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_prec]).toLocaleString() + 'mm')
               .addTo(beforeMap);
           });
           beforeMap.on('mouseenter', id_refresher_prec, () => {
@@ -280,7 +280,7 @@
     afterMap.on('click', 'default', (e) => {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties.tavg201701).toLocaleString()+'&#x2103')
+        .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties.tavg201701).toLocaleString() + '&#x2103')
         .addTo(afterMap);
     });
     afterMap.on('mouseenter', 'default', () => {
@@ -382,7 +382,7 @@
           afterMap.on('click', id_refresher_temp, (e) => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_temp]).toLocaleString()+'&#x2103')
+              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_temp]).toLocaleString() + '&#x2103')
               .addTo(afterMap);
           });
           afterMap.on('mouseenter', id_refresher_temp, () => {
@@ -425,7 +425,7 @@
           afterMap.on('click', id_refresher_prec, (e) => {
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>'+e.features[0].properties.name+'</b>'+':'+' '+(e.features[0].properties[user_selection_prec]).toLocaleString()+'mm')
+              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_prec]).toLocaleString() + 'mm')
               .addTo(afterMap);
           });
           afterMap.on('mouseenter', id_refresher_prec, () => {
