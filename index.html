@@ -23,77 +23,76 @@
 </head>
 
 <body>
-	
-		<div id="comparison-container">
-			<div id="before" class="map"></div>
-			<div id="after" class="map"></div>
-		</div>
 
-			<!-- Console DIV start -->
-			<div id="console">
-				<div class="title-session">
-					<h2>KY Weather Information
-				</div>
-				<div class="session">
-					<h5>Temperature (&#x2103)</h5>
-					<div class="row tempcolors"></div>
-					<div class="row labels">
-						<div class="label">-5</div>
-						<div class="label">0</div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label">+30</div>
-					</div>
-				</div>
-				<div class="session">
-					<h5>Precipitation (mm)</h5>
-					<div class="row preccolors"></div>
-					<div class="row labels">
-						<div class="label">0</div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label"> </div>
-						<div class="label">250</div>
-					</div>
-				</div>
-				<div id="variable-change">
-					<div class="form-group mr-3 mt-3" id="left-var-selection_all">
-						<select class="form-select bg-primary text-white">
-							<option id="left-var-selection-tavg" value="tavg" selected>Left Map Average Heat</option>
-							<option id="left-var-selection-tmin" value="tmin">Left Map Min Heat</option>
-							<option id="left-var-selection-tmax" value="tmax">Left Map Max Heat</option>
-							<option id="left-var-selection-prec" value="precp">Left Map Rainfall</option>
-						</select>
-					</div>
-					<div class="form-group mr-3 mt-3" id="right-var-selection_all">
-						<select class="form-select bg-primary text-white">
-							<option id="right-var-selection-tavg" value="tavg" selected>Right Map Average Heat</option>
-							<option id="right-var-selection-tmin" value="tmin">Right Map Min Heat</option>
-							<option id="right-var-selection-tmax" value="tmax">Right Map Max Heat</option>
-							<option id="right-var-selection-prec" value="precp">Right Map Rainfall</option>
-						</select>
-					</div><br>
-					<div class="session">
-						<h5><label id="slider-year">Year</label></h5>
-						<p><input id="slider-year-bar" class="row" type="range" min="2017" max="2019" step="1"
-								value="2017" />
-						</p>
-						<h5><label id="slider-month">Month</label></h5>
-						<input id="slider-month-bar" class="row" type="range" min="1" max="12" step="1" value="1" />
-					</div>
-				</div>
-				<div>
-					<h7>© <a href="https://github.com/HoyeonJeong" target="_blank">Hoyeon Jeong</a>, Nov. 2021.
-					</h7>
-				</div>
+	<div id="comparison-container">
+		<div id="before" class="map"></div>
+		<div id="after" class="map"></div>
+	</div>
+
+	<!-- Console DIV start -->
+	<div id="console">
+		<div class="title-session">
+			<h2>KY Weather Information
+		</div>
+		<div class="session">
+			<h5>Temperature (&#x2103)</h5>
+			<div class="row tempcolors"></div>
+			<div class="row labels">
+				<div class="label">-5</div>
+				<div class="label">0</div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label">+30</div>
 			</div>
-		<!-- Console DIV End -->
+		</div>
+		<div class="session">
+			<h5>Precipitation (mm)</h5>
+			<div class="row preccolors"></div>
+			<div class="row labels">
+				<div class="label">0</div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label"> </div>
+				<div class="label">250</div>
+			</div>
+		</div>
+		<div id="variable-change">
+			<div class="form-group mr-3 mt-3" id="left-var-selection_all">
+				<select class="form-select bg-primary text-white">
+					<option id="left-var-selection-tavg" value="tavg" selected>Left Map Average Heat</option>
+					<option id="left-var-selection-tmin" value="tmin">Left Map Min Heat</option>
+					<option id="left-var-selection-tmax" value="tmax">Left Map Max Heat</option>
+					<option id="left-var-selection-prec" value="precp">Left Map Rainfall</option>
+				</select>
+			</div>
+			<div class="form-group mr-3 mt-3" id="right-var-selection_all">
+				<select class="form-select bg-primary text-white">
+					<option id="right-var-selection-tavg" value="tavg" selected>Right Map Average Heat</option>
+					<option id="right-var-selection-tmin" value="tmin">Right Map Min Heat</option>
+					<option id="right-var-selection-tmax" value="tmax">Right Map Max Heat</option>
+					<option id="right-var-selection-prec" value="precp">Right Map Rainfall</option>
+				</select>
+			</div><br>
+			<div class="session">
+				<h5><label id="slider-year">Year (2017 - 2018 - 2019)</label></h5>
+				<p><input id="slider-year-bar" class="row" type="range" min="2017" max="2019" step="1" value="2017" />
+				</p>
+				<h5><label id="slider-month">Month (Jan - Dec)</label></h5>
+				<input id="slider-month-bar" class="row" type="range" min="1" max="12" step="1" value="1" />
+			</div>
+		</div>
+		<div>
+			<h7>© <a href="https://github.com/HoyeonJeong" target="_blank">Hoyeon Jeong</a>, Nov. 2021.
+			</h7>
+		</div>
+	</div>
+	<!-- Console DIV End -->
 
 	<!-- Scripts -->
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
