@@ -6,12 +6,10 @@ Map Page: https://hoyeonjeong.github.io/kyagronomicinfo/
 - The data to draw map is converted into geojson file using QGIS and SQL.
 
 ## 2. User Interaction (Working on Progress)
-- Left and Right maps might be toggled with the dropdown menu (working on progress).
-- Year and Month sliders change colors on left and right maps.
-- For clear to color the map, I will use the absolute interval for temperatures and precipitations.
-- For instance, bright red color is displayed when the temperature is below -20 degree Celsius and dark red colors is shown when the it is over 30 degree Celsius with 5 or 6 intervals.
-- For rain (precipitation), I will apply the same logic, too.
+- The dropdown menu forces to change the variable in the data, and displays the different colors across Kentucky. Two dropdown menus specify the property of each map.
+- Year and Month sliders can change the variable, too.
+- Thus, the choropleth layer is updated by the user interaction changing content menus and sliding year & month.
 
 ## 3. Problem (Current)
-- Since I am using Mapbox GL JS with many tools, the time to load data is too long so that the reponse to change is too slow.
-- Because Mapbox GL is different than materials that I learned in the class, I face some difficulties on drawing the map.
+- Although the wide format data set is more efficient than the long format one, it still have a heavy loading problem.
+- The webpage is not user friendly. For instance, if people use the mobile phone to see the page, the legend area hides the map. Therefore, a button to hide or show the legend is necessary for the web page to be user-freindly.

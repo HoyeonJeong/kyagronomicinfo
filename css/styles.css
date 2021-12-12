@@ -1,6 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   overflow: hidden;
 }
 
@@ -105,8 +105,8 @@ h1 {
 }
 
 /* When screen is 768px and wider. */
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
 #console {
   display: none;
   }
-}
+} */
