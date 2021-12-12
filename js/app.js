@@ -88,7 +88,6 @@
     });
     beforeMap.on('mouseleave', 'default', () => {
       beforeMap.getCanvas().style.cursor = '';
-      popup.remove();
     });
     ["change", "input"].forEach(function (event) { //User Interaction: dropdown and slider input
       document.addEventListener(event, function () {
@@ -192,7 +191,6 @@
           });
           beforeMap.on('mouseleave', id_refresher_temp, () => {
             beforeMap.getCanvas().style.cursor = '';
-            popup.remove();
           });
         } else { //dropdown value==precepitation
           beforeMap.addLayer({
@@ -236,7 +234,6 @@
           });
           beforeMap.on('mouseleave', id_refresher_prec, () => {
             beforeMap.getCanvas().style.cursor = '';
-            popup.remove();
           });
         };
       });
@@ -291,7 +288,6 @@
     });
     afterMap.on('mouseleave', 'default', () => {
       afterMap.getCanvas().style.cursor = '';
-      popup.remove();
     });
     ["change", "input"].forEach(function (event) {
       document.addEventListener(event, function () {
@@ -394,7 +390,6 @@
           });
           afterMap.on('mouseleave', id_refresher_temp, () => {
             afterMap.getCanvas().style.cursor = '';
-            popup.remove();
           });
         } else {
           afterMap.addLayer({
@@ -438,7 +433,6 @@
           });
           afterMap.on('mouseleave', id_refresher_prec, () => {
             afterMap.getCanvas().style.cursor = '';
-            popup.remove();
           });
         };
       });
