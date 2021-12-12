@@ -30,12 +30,12 @@
   
   // Swiper position change by windows size
   const mapSize=document.querySelector(".map");
-  map.setSlider(mapSize.offsetWidth-480);
+  map.setSlider(mapSize.offsetWidth*0.6);
   
   window.addEventListener("resize", adjustSwipe);
 
   function adjustSwipe() {
-    map.setSlider(mapSize.offsetWidth-480);
+    map.setSlider(mapSize.offsetWidth*0.6);
   }
 
 
