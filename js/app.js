@@ -83,7 +83,7 @@
         .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties.tavg201701).toLocaleString() + '&#x2103')
         .addTo(beforeMap);
     });
-    beforeMap.on('mouseenter', 'default', () => {
+    beforeMap.on('click', 'default', () => {
       beforeMap.getCanvas().style.cursor = 'pointer';
     });
     beforeMap.on('mouseleave', 'default', () => {
@@ -186,7 +186,7 @@
               .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_temp]).toLocaleString() + '&#x2103')
               .addTo(beforeMap);
           });
-          beforeMap.on('mouseenter', id_refresher_temp, () => {
+          beforeMap.on('click', id_refresher_temp, () => {
             beforeMap.getCanvas().style.cursor = 'pointer';
           });
           beforeMap.on('mouseleave', id_refresher_temp, () => {
@@ -229,7 +229,7 @@
               .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_prec]).toLocaleString() + 'mm')
               .addTo(beforeMap);
           });
-          beforeMap.on('mouseenter', id_refresher_prec, () => {
+          beforeMap.on('click', id_refresher_prec, () => {
             beforeMap.getCanvas().style.cursor = 'pointer';
           });
           beforeMap.on('mouseleave', id_refresher_prec, () => {
@@ -283,7 +283,7 @@
         .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties.tavg201701).toLocaleString() + '&#x2103')
         .addTo(afterMap);
     });
-    afterMap.on('mouseenter', 'default', () => {
+    afterMap.on('click', 'default', () => {
       afterMap.getCanvas().style.cursor = 'pointer';
     });
     afterMap.on('mouseleave', 'default', () => {
@@ -385,7 +385,7 @@
               .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_temp]).toLocaleString() + '&#x2103')
               .addTo(afterMap);
           });
-          afterMap.on('mouseenter', id_refresher_temp, () => {
+          afterMap.on('click', id_refresher_temp, () => {
             afterMap.getCanvas().style.cursor = 'pointer';
           });
           afterMap.on('mouseleave', id_refresher_temp, () => {
@@ -428,7 +428,7 @@
               .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_prec]).toLocaleString() + 'mm')
               .addTo(afterMap);
           });
-          afterMap.on('mouseenter', id_refresher_prec, () => {
+          afterMap.on('click', id_refresher_prec, () => {
             afterMap.getCanvas().style.cursor = 'pointer';
           });
           afterMap.on('mouseleave', id_refresher_prec, () => {
