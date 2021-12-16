@@ -37,7 +37,8 @@
   function adjustSwipe() {
     map.setSlider(mapSize.offsetWidth * 0.6);
   }
-  
+
+  //Popup Content (Global Declaration)
   var popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: true
