@@ -37,13 +37,11 @@
   function adjustSwipe() {
     map.setSlider(mapSize.offsetWidth * 0.6);
   }
- 
+  
   var popup = new mapboxgl.Popup({
     closeButton: false,
-    closeOnclick: false,
+    closeOnClick: true
   });
-
-  console.log(popup);
 
   //Left Map base (Beforemap)
   beforeMap.on('load', () => {
@@ -84,13 +82,11 @@
       }
     });
     beforeMap.on('click', 'default', (e) => {
+      beforeMap.getCanvas().style.cursor = 'pointer';
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties.tavg201701).toLocaleString() + '&#x2103')
+        .setHTML(`<b>${e.features[0].properties.name}</b>: ${(e.features[0].properties.tavg201701).toLocaleString()}&#x2103`)
         .addTo(beforeMap);
-    });
-    beforeMap.on('click', 'default', () => {
-      beforeMap.getCanvas().style.cursor = 'pointer';
     });
     beforeMap.on('mouseleave', 'default', () => {
       beforeMap.getCanvas().style.cursor = '';
@@ -188,13 +184,11 @@
             }
           });
           beforeMap.on('click', id_refresher_temp, (e) => {
+            beforeMap.getCanvas().style.cursor = 'pointer';
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_temp]).toLocaleString() + '&#x2103')
+              .setHTML(`<b>${e.features[0].properties.name}</b>: ${(e.features[0].properties[user_selection_temp]).toLocaleString()}&#x2103`)
               .addTo(beforeMap);
-          });
-          beforeMap.on('click', id_refresher_temp, () => {
-            beforeMap.getCanvas().style.cursor = 'pointer';
           });
           beforeMap.on('mouseleave', id_refresher_temp, () => {
             beforeMap.getCanvas().style.cursor = '';
@@ -232,18 +226,17 @@
             }
           });
           beforeMap.on('click', id_refresher_prec, (e) => {
+            beforeMap.getCanvas().style.cursor = 'pointer';
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_prec]).toLocaleString() + 'mm')
+              .setHTML(`<b>${e.features[0].properties.name}</b>: ${(e.features[0].properties[user_selection_prec]).toLocaleString()}mm`)
               .addTo(beforeMap);
-          });
-          beforeMap.on('click', id_refresher_prec, () => {
-            beforeMap.getCanvas().style.cursor = 'pointer';
           });
           beforeMap.on('mouseleave', id_refresher_prec, () => {
             beforeMap.getCanvas().style.cursor = '';
             popup.remove();
           });
+          console.log(popup)
         };
       });
     });
@@ -255,7 +248,6 @@
       type: 'geojson',
       data: 'csv/QGIStool/shp/weather_wide.geojson'
     });
-
     afterMap.addLayer({
       'id': 'default',
       'type': 'fill',
@@ -287,13 +279,11 @@
       }
     });
     afterMap.on('click', 'default', (e) => {
+      afterMap.getCanvas().style.cursor = 'pointer';
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties.tavg201701).toLocaleString() + '&#x2103')
+        .setHTML(`<b>${e.features[0].properties.name}</b>: ${(e.features[0].properties.tavg201701).toLocaleString()}&#x2103`)
         .addTo(afterMap);
-    });
-    afterMap.on('click', 'default', () => {
-      afterMap.getCanvas().style.cursor = 'pointer';
     });
     afterMap.on('mouseleave', 'default', () => {
       afterMap.getCanvas().style.cursor = '';
@@ -390,13 +380,11 @@
             }
           });
           afterMap.on('click', id_refresher_temp, (e) => {
+            afterMap.getCanvas().style.cursor = 'pointer';
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_temp]).toLocaleString() + '&#x2103')
+              .setHTML(`<b>${e.features[0].properties.name}</b>: ${(e.features[0].properties[user_selection_temp]).toLocaleString()}&#x2103`)
               .addTo(afterMap);
-          });
-          afterMap.on('click', id_refresher_temp, () => {
-            afterMap.getCanvas().style.cursor = 'pointer';
           });
           afterMap.on('mouseleave', id_refresher_temp, () => {
             afterMap.getCanvas().style.cursor = '';
@@ -434,13 +422,11 @@
             }
           });
           afterMap.on('click', id_refresher_prec, (e) => {
+            afterMap.getCanvas().style.cursor = 'pointer';
             new mapboxgl.Popup()
               .setLngLat(e.lngLat)
-              .setHTML('<b>' + e.features[0].properties.name + '</b>' + ':' + ' ' + (e.features[0].properties[user_selection_prec]).toLocaleString() + 'mm')
+              .setHTML(`<b>${e.features[0].properties.name}</b>: ${(e.features[0].properties[user_selection_prec]).toLocaleString()}mm`)
               .addTo(afterMap);
-          });
-          afterMap.on('click', id_refresher_prec, () => {
-            afterMap.getCanvas().style.cursor = 'pointer';
           });
           afterMap.on('mouseleave', id_refresher_prec, () => {
             afterMap.getCanvas().style.cursor = '';
